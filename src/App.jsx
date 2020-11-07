@@ -5,26 +5,30 @@ import ListItem from "./components/ListItem";
 
 function App() {
   const [query, setQuery] = useState("");
-  //const [suggestions, setSugestions] = useState("");
+  const [suggestions, setSugestions] = useState("");
   const [images, setImages] = useState([]);
   const accessKey = "5gOIvztDV9Uwc_UsC7CG3If4ZMTumuEo58gxCUtf48Q";
   const url = "https://api.unsplash.com/search/photos";
-  //const url2 = "https://unsplash.com/nautocomplete/";
+  const url2 = "https://unsplash.com/nautocomplete/";
 
   const handleChange = (event) => {
     setQuery(event.target.value);
-    // axios
-    //   .get(url2 + event.target.value)
-    //   .then((data) => {
-    //     setSugestions(data);
-    //     console.log(suggestions);
-    //   })
-    //   .catch((err) => {
-    //     console.log("Error happened during fetching suggestions!", err);
-    //   });
+    if (event.target.value === "") setImages([]);
+
+    axios
+      .get(url2 + event.target.value, {
+        params: { client_id: accessKey },
+      })
+      .then((data) => {
+        setSugestions(data);
+        console.log(suggestions);
+      })
+      .catch((err) => {
+        console.log("Error happened during fetching suggestions!", err);
+      });
   };
 
-  const handleClick = (event) => {
+  const handleClick = () => {
     axios
       .get(url, {
         params: { query: query, page: 1, client_id: accessKey, per_page: 24 },
@@ -36,6 +40,12 @@ function App() {
       .catch((err) => {
         console.log("Error happened during fetching!", err);
       });
+  };
+
+  const onKeyUp = (e) => {
+    if (e.charCode === 13) {
+      handleClick();
+    }
   };
 
   const imagesList = (
@@ -52,6 +62,7 @@ function App() {
         <h1>Unsplash photo search</h1>
         <input
           onChange={handleChange}
+          onKeyPress={onKeyUp}
           type="test"
           name="photo"
           placeholder="Search for photo"
