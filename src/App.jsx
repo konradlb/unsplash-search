@@ -5,11 +5,11 @@ import ListItem from "./components/ListItem";
 
 function App() {
   const [query, setQuery] = useState("");
-  const [suggestions, setSugestions] = useState("");
+  //const [suggestions, setSugestions] = useState("");
   const [images, setImages] = useState([]);
   const accessKey = "5gOIvztDV9Uwc_UsC7CG3If4ZMTumuEo58gxCUtf48Q";
   const url = "https://api.unsplash.com/search/photos";
-  const url2 = "https://unsplash.com/nautocomplete/";
+  //const url2 = "https://unsplash.com/nautocomplete/";
 
   const handleChange = (event) => {
     setQuery(event.target.value);
