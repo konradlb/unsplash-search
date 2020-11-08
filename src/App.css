@@ -5,7 +5,7 @@
 body {
   margin: 0;
   background-color: #f5f6f7;
-  background-image: url("/src/img/background.jpeg"); /* https://unsplash.com/photos/sGRMspZmfPE */
+  /* background-image: url("/src/img/background.jpeg"); https://unsplash.com/photos/sGRMspZmfPE */
   display: flex;
   justify-content: center;
   padding: 20px 0;
