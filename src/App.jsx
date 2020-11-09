@@ -52,7 +52,6 @@ function App() {
       handleClick();
     }
   };
-  console.log(images);
   return (
     <>
       <div className="app">
@@ -65,7 +64,7 @@ function App() {
             onKeyPress={onKeyUp}
             placeholder="Search for photo"
             type="test"
-          ></input>
+          />
           <div className="message">
             {images.length > 0 && !isLoading && <h2>{currentlyDisplayed}</h2>}
             {notFound && !isLoading && <NotFound />}
