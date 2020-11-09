@@ -1,10 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
-import "./App.css";
-import "normalize.css";
+
 import ImagesList from "./components/Images/ImagesList";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import NotFound from "./components/NotFound/NotFound";
+
+import "./css/App.css";
+import "normalize.css";
 
 function App() {
   const [query, setQuery] = useState("");
