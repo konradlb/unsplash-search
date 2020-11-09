@@ -79,7 +79,7 @@ function App() {
           type="test"
         ></input>
 
-        {/* {images && <h2>{query}</h2>} */}
+        {images && <h2>{query}</h2>}
       </div>
       <div className="card-list">
         <ImagesList images={images} notFound={notFound} />
