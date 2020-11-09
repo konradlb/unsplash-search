@@ -81,30 +81,46 @@ body {
 .cardFooter {
   width: 100%;
   padding: 10px 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
-
-.mediaObject {
+.user {
+  display: flex;
+  flex-direction: row;
+}
+.userAvatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   background-color: #d8d8d8;
   margin-right: 15px;
-  float: left;
 }
 
-.mediaBody {
+.userLink {
   width: 100%;
   height: 32px;
   line-height: 32px;
 }
-
-.mediaBody a {
+.userLocation span {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE4LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDI5NyAyOTciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI5NyAyOTc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGQ9Ik0xNDguNSwwQzg3LjQzLDAsMzcuNzQ3LDQ5LjcwMywzNy43NDcsMTEwLjc5N2MwLDkxLjAyNiw5OS43MjksMTc5LjkwNSwxMDMuOTc2LDE4My42NDUNCgkJYzEuOTM2LDEuNzA1LDQuMzU2LDIuNTU5LDYuNzc3LDIuNTU5YzIuNDIxLDAsNC44NDEtMC44NTMsNi43NzgtMi41NTljNC4yNDUtMy43MzksMTAzLjk3NS05Mi42MTgsMTAzLjk3NS0xODMuNjQ1DQoJCUMyNTkuMjUzLDQ5LjcwMywyMDkuNTcsMCwxNDguNSwweiBNMTQ4LjUsMjcyLjY4OWMtMjIuMDQ5LTIxLjM2Ni05MC4yNDMtOTMuMDI5LTkwLjI0My0xNjEuODkyDQoJCWMwLTQ5Ljc4NCw0MC40ODMtOTAuMjg3LDkwLjI0My05MC4yODdzOTAuMjQzLDQwLjUwMyw5MC4yNDMsOTAuMjg3QzIzOC43NDMsMTc5LjY1OSwxNzAuNTQ5LDI1MS4zMjIsMTQ4LjUsMjcyLjY4OXoiLz4NCgk8cGF0aCBkPSJNMTQ4LjUsNTkuMTgzYy0yOC4yNzMsMC01MS4yNzQsMjMuMTU0LTUxLjI3NCw1MS42MTRjMCwyOC40NjEsMjMuMDAxLDUxLjYxNCw1MS4yNzQsNTEuNjE0DQoJCWMyOC4yNzMsMCw1MS4yNzQtMjMuMTUzLDUxLjI3NC01MS42MTRDMTk5Ljc3NCw4Mi4zMzcsMTc2Ljc3Myw1OS4xODMsMTQ4LjUsNTkuMTgzeiBNMTQ4LjUsMTQxLjkwMQ0KCQljLTE2Ljk2NCwwLTMwLjc2NS0xMy45NTMtMzAuNzY1LTMxLjEwNGMwLTE3LjE1LDEzLjgwMS0zMS4xMDQsMzAuNzY1LTMxLjEwNGMxNi45NjQsMCwzMC43NjUsMTMuOTUzLDMwLjc2NSwzMS4xMDQNCgkJQzE3OS4yNjUsMTI3Ljk0OCwxNjUuNDY0LDE0MS45MDEsMTQ4LjUsMTQxLjkwMXoiLz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K");
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: left;
+  padding: 20px;
   font-family: Courier, serif;
   font-size: 15px;
   color: #999;
 }
 
-.mediaBody a:hover {
+.userLink a {
+  font-family: Courier, serif;
+  font-size: 15px;
+  color: #999;
+}
+
+.userLink a:hover {
   text-decoration: none;
 }
 
@@ -115,7 +131,7 @@ body {
   background-repeat: no-repeat;
   background-size: 18px 18px;
   background-position: 95% center;
-  margin: 4%;
+  margin: 1%;
   padding: 16px 32px 16px 32px;
   outline: none;
   border: 1px solid #ccc;
@@ -130,7 +146,8 @@ body {
   left: 8%;
   right: 8%;
   bottom: auto;
-  background-color: whitesmoke;
+  background-color: #f5f6f7;
+  border-radius: 10px;
   padding: 10px;
   margin-top: 20px;
   margin-bottom: 20px;

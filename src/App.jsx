@@ -66,7 +66,7 @@ function App() {
           ></input>
           <div className="message">
             {images.length > 0 && !isLoading && <h2>{currentlyDisplayed}</h2>}
-            {notFound && <NotFound />}
+            {notFound && !isLoading && <NotFound />}
             {isLoading && <LoadingSpinner />}
           </div>
         </div>

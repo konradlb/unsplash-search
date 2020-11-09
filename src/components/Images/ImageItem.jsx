@@ -10,7 +10,7 @@ function ImageItem({ image }) {
   const closeModal = () => {
     setModalOpen(false);
   };
-
+  console.log(image);
   return (
     <>
       <div key={image.id} className="gridItem card">
@@ -20,23 +20,27 @@ function ImageItem({ image }) {
           </button>
         </div>
       </div>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        //style={modalCustomStyles}
-        className="modal"
-      >
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="modal">
         <img className="modalImage" src={image.urls.small} alt="" />
-        <div className="cardFooter media">
-          <img
-            src={image.user.profile_image.small}
-            alt=""
-            className="mediaObject"
-          />
-          <div className="mediaBody">
-            <a href={image.user.portfolio_url} target="_blank" rel="noreferrer">
-              {image.user.name}
-            </a>
+        <div className="cardFooter">
+          <div className="user">
+            <img
+              src={image.user.profile_image.small}
+              alt=""
+              className="userAvatar"
+            />
+            <div className="userLink">
+              <a
+                href={image.user.portfolio_url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {image.user.name}
+              </a>
+            </div>
+          </div>
+          <div className="userLocation">
+            <span>{image.user.location}</span>
           </div>
         </div>
       </Modal>
