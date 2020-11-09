@@ -10,7 +10,13 @@ function ImageItem({ image }) {
   const closeModal = () => {
     setModalOpen(false);
   };
-  console.log(image);
+
+  const location = image.user.location && (
+    <div className="userLocation">
+      <span>{image.user.location}</span>
+    </div>
+  );
+
   return (
     <>
       <div key={image.id} className="gridItem card">
@@ -39,9 +45,7 @@ function ImageItem({ image }) {
               </a>
             </div>
           </div>
-          <div className="userLocation">
-            <span>{image.user.location}</span>
-          </div>
+          {location}
         </div>
       </Modal>
     </>
