@@ -13,8 +13,8 @@ function ImageItem({ image }) {
 
   return (
     <>
-      <div key={image.id} className="grid__item card">
-        <div className="card__body">
+      <div key={image.id} className="gridItem card">
+        <div className="cardBody">
           <button onClick={openModal}>
             <img src={image.urls.small} alt="" />
           </button>
@@ -27,13 +27,13 @@ function ImageItem({ image }) {
         className="modal"
       >
         <img className="modalImage" src={image.urls.small} alt="" />
-        <div className="card__footer media">
+        <div className="cardFooter media">
           <img
             src={image.user.profile_image.small}
             alt=""
-            className="media__obj"
+            className="mediaObject"
           />
-          <div className="media__body">
+          <div className="mediaBody">
             <a href={image.user.portfolio_url} target="_blank" rel="noreferrer">
               {image.user.name}
             </a>

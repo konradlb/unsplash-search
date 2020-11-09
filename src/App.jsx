@@ -3,6 +3,8 @@ import axios from "axios";
 import "./App.css";
 import "normalize.css";
 import ImagesList from "./components/Images/ImagesList";
+import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -11,30 +13,13 @@ function App() {
   const [images, setImages] = useState([]);
   const accessKey = "5gOIvztDV9Uwc_UsC7CG3If4ZMTumuEo58gxCUtf48Q";
   const url = "https://api.unsplash.com/search/photos";
-  //const url2 = "https://unsplash.com/nautocomplete/";
-  //const url2 =
-  //("https://cors-anywhere.herokuapp.com/https://unsplash.com/nautocomplete/");
-
+  const [currentlyDisplayed, setCurrentlyDisplayed] = useState("");
   const handleChange = (event) => {
     setQuery(event.target.value);
     if (event.target.value === "") {
       setImages([]);
       setNotFound(false);
     }
-    // axios
-    //   .get(url2 + event.target.value);
-    //   .get(url2 + event.target.value, {
-    //   params: { client_id: accessKey },
-    // })
-
-    // fetch(url2 + event.target.value)
-    //   .then((data) => {
-    //     setSugestions(data);
-    //     console.log(suggestions);
-    //   })
-    //   .catch((err) => {
-    //     console.log("Error happened during fetching suggestions!", err);
-    //   });
   };
 
   const handleClick = () => {
@@ -49,8 +34,10 @@ function App() {
       .then((data) => {
         setImages(data.data.results);
         setLoading(false);
+        setCurrentlyDisplayed(query);
         if (data.data.results.length === 0) {
           setNotFound(true);
+          setCurrentlyDisplayed("");
         } else setNotFound(false);
       })
       .catch((err) => {
@@ -63,26 +50,30 @@ function App() {
       handleClick();
     }
   };
-
+  console.log(images);
   return (
     <>
-      <div className="App">
-        <h1>Unsplash photo search</h1>
-        {isLoading && <h1>loading</h1>}
+      <div className="app">
+        <div className="header">
+          <h1>Unsplash photo search</h1>
+          <input
+            className="searchInput"
+            name="photo"
+            onChange={handleChange}
+            onKeyPress={onKeyUp}
+            placeholder="Search for photo"
+            type="test"
+          ></input>
+          <div className="message">
+            {images.length > 0 && !isLoading && <h2>{currentlyDisplayed}</h2>}
+            {notFound && <NotFound />}
+            {isLoading && <LoadingSpinner />}
+          </div>
+        </div>
 
-        <input
-          class="searchInput"
-          name="photo"
-          onChange={handleChange}
-          onKeyPress={onKeyUp}
-          placeholder="Search for photo"
-          type="test"
-        ></input>
-
-        {images && <h2>{query}</h2>}
-      </div>
-      <div className="card-list">
-        <ImagesList images={images} notFound={notFound} />
+        <div className="card-list">
+          <ImagesList images={images} />
+        </div>
       </div>
     </>
   );
