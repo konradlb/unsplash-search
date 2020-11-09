@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import "normalize.css";
-import ListItem from "./components/ListItem";
+import ImagesList from "./components/Images/ImagesList";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -48,7 +48,6 @@ function App() {
       })
       .then((data) => {
         setImages(data.data.results);
-        console.log(images);
         setLoading(false);
         if (data.data.results.length === 0) {
           setNotFound(true);
@@ -65,14 +64,6 @@ function App() {
     }
   };
 
-  const imagesList = (
-    <div className="grid">
-      {images.map((image) => (
-        <ListItem key={image.id} image={image} />
-      ))}
-    </div>
-  );
-
   return (
     <>
       <div className="App">
@@ -87,18 +78,11 @@ function App() {
           placeholder="Search for photo"
           type="test"
         ></input>
+
+        {/* {images && <h2>{query}</h2>} */}
       </div>
       <div className="card-list">
-        {notFound && (
-          <div>
-            <h3>No images found</h3>
-            <img
-              alt="No images found"
-              src="https://unsplash.com/a/img/empty-states/photos.png"
-            />
-          </div>
-        )}
-        {imagesList}
+        <ImagesList images={images} notFound={notFound} />
       </div>
     </>
   );
