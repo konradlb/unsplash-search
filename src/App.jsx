@@ -13,7 +13,7 @@ function App() {
   const [isLoading, setLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const [images, setImages] = useState([]);
-  const accessKey = "5gOIvztDV9Uwc_UsC7CG3If4ZMTumuEo58gxCUtf48Q";
+  const accessKey = process.env.REACT_APP_ACCES_KEY;
   const url = "https://api.unsplash.com/search/photos";
   const [currentlyDisplayed, setCurrentlyDisplayed] = useState("");
   const handleChange = (event) => {
